@@ -1,9 +1,10 @@
 import './App.css';
+import Banner from './components/banner/banner';
 
 function App() {
   return (
     <div className="App">
-
+           <Banner/>
     </div>
   );
 }
