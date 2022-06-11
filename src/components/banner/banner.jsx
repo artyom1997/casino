@@ -1,30 +1,36 @@
 import "./banner.css";
-
-
+import Slider from "../../helpers/slider/slider";
+import Slide from "../../helpers/slide/slide"
 
 export default function Banner() {
-//   const settings = {
-//     dots: true,
-//     infinite: true,
-//     speed: 500,
-//     slidesToShow: 2,
-//     slidesToScroll: 1,
-//   };
-
-//   const banners = [
-//       {
-//           number:1
-//       },
-//       {
-//         number:2
-//     },{
-//         number:3
-//     },
-//   ]
+  const config = {
+    autoplay: false,
+    blockCount: 3,
+    navigation: true,
+    navigationPosition: "space-between",
+    pagination: true,
+    loopTimer: 2000,
+    position: "start",
+    direction: "right",
+    paginationClickable: true,
+    slidesToScroll:3
+  };
 
   return (
     <div className="banner-main">
-  
+      <Slider config={config}>
+        <Slide>1</Slide>
+        <Slide>2</Slide>
+        <Slide>3</Slide>
+        <Slide>4</Slide>
+        <Slide>5</Slide>
+        <Slide>6</Slide>
+        <Slide>7</Slide>
+        <Slide>8</Slide>
+        <Slide>9</Slide>
+        <Slide>10</Slide>
+        <Slide>11</Slide>
+      </Slider>
     </div>
   );
 }
