@@ -1,19 +1,18 @@
 import "./banner.css";
-import Slider from "../../helpers/slider/slider";
-import Slide from "../../helpers/slide/slide"
+import Slider from "../slider/slider";
+import Slide from "../slide/slide"
 
 export default function Banner() {
   const config = {
-    autoplay: false,
-    blockCount: 3,
+    autoplay: true,
+    blockCount: 2,
     navigation: true,
     navigationPosition: "space-between",
     pagination: true,
     loopTimer: 2000,
-    position: "start",
+    position: "center",
     direction: "right",
     paginationClickable: true,
-    slidesToScroll:3
   };
 
   return (
