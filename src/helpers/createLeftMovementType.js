@@ -13,5 +13,14 @@ export default function createLeftMovementType(
       type = "move";
     }
   }
+  if (position === "start") {
+    if (prev >= 0) {
+      type = "goStart";
+    } else if (prev + width >= 0) {
+      type = "end";
+    } else {
+        type = "move"
+    }
+  }
   return type;
 }

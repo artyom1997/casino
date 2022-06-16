@@ -10,7 +10,7 @@ export default function Banner() {
     navigationPosition: "space-between",
     pagination: true,
     loopTimer: 2000,
-    position: "center",
+    position: "start",
     direction: "left",
     paginationClickable: true,
   };

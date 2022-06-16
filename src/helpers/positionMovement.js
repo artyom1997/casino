@@ -38,6 +38,18 @@ const functionPack = {
             (width / blockCount) * ((blockCount - 1) / 2));
       }
     },
+    start(prev, width, type, length, blockCount) {
+       switch (type){
+          case "start":
+            return prev = -(width/blockCount)*(length-blockCount);
+          case "move":
+            return prev += width
+          case "end":
+            return prev += ((length%blockCount)*(width/blockCount))
+          case "goStart":
+            return prev = -(width/blockCount)*(length-blockCount);
+       }
+    }
   },
 };
 
