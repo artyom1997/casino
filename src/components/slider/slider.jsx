@@ -1,10 +1,18 @@
 import cn from "./slider.module.scss";
 import PropTypes from "prop-types";
-import createMovementType from "../../helpers/createMovementType";
+import createRightMovementType from "../../helpers/createRightMovementType";
+import createLeftMovementType from "../../helpers/createLeftMovementType";
 import positionMovement from "../../helpers/positionMovement";
+import createMovementArgs from "../../helpers/movementArgs";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { useState, useEffect, useRef, useMemo, Children, cloneElement } from "react";
-
+import {
+  useState,
+  useEffect,
+  useRef,
+  useMemo,
+  Children,
+  cloneElement,
+} from "react";
 
 export default function Slider({ config, children }) {
   const [sliderPosition, setSliderPosition] = useState(0);
@@ -12,53 +20,52 @@ export default function Slider({ config, children }) {
   const [block, setBlock] = useState([]);
   const sliderInnerRef = useRef(null);
 
-  const carouselStartRight = () => {};
-
-  const carouselStartLeft = () => {
-    // setSliderPosition((prev) => {
-    //   let newPosition = 0;
-    //   if (prev === 0) {
-    //     newPosition = -(
-    //       (Math.ceil(children.length / config.blockCount) - 1) *
-    //       sliderInnerRef.current.offsetWidth
-    //     );
-    //     if (children.length % config.blockCount !== 0) {
-    //       newPosition +=
-    //         Math.ceil(sliderInnerRef.current.offsetWidth / config.blockCount) *
-    //         (config.blockCount - (children.length % config.blockCount));
-    //     }
-    //   } else {
-    //     if (-prev < sliderInnerRef.current.offsetWidth) {
-    //       newPosition = 0;
-    //     } else newPosition = prev + sliderInnerRef.current.offsetWidth;
-    //   }
-    //   return newPosition;
-    // });
-  };
-
   const goRight = () => {
     setSliderPosition((prev) => {
-      const movemnetArgs = {
-        position: config.position,
-        width: sliderInnerRef.current.offsetWidth,
-        type: createMovementType(
+      const type = createRightMovementType(
+        sliderInnerRef.current.offsetWidth,
+        config.blockCount,
+        children.length,
+        prev,
+        config.position
+      );
+      return positionMovement({
+        prev,
+        ...new createMovementArgs(
+          config.position,
           sliderInnerRef.current.offsetWidth,
+          type,
           config.blockCount,
           children.length,
-          prev,
-          config.position
+          "right"
         ),
-        blockCount: config.blockCount,
-        length: children.length,
-      };
-      return positionMovement({ prev, ...movemnetArgs });
+      });
     });
     clearInterval(intervalId);
   };
 
   const goLeft = () => {
-    // clearInterval(intervalId);
-    // carouselStartLeft();
+    setSliderPosition((prev) => {
+      const type = createLeftMovementType(
+        sliderInnerRef.current.offsetWidth,
+        config.blockCount,
+        children.length,
+        prev,
+        config.position
+      );
+      return positionMovement({
+        prev,
+        ...new createMovementArgs(
+          config.position,
+          sliderInnerRef.current.offsetWidth,
+          type,
+          config.blockCount,
+          children.length,
+          "left"
+        ),
+      });
+    });
+    clearInterval(intervalId);
   };
 
   const navLeftStyles = useMemo(() => {
@@ -107,19 +114,31 @@ export default function Slider({ config, children }) {
   }, [config]);
 
   useEffect(() => {
-    const movemnetArgs = {
-      position: config.position,
-      width: sliderInnerRef.current.offsetWidth,
-      type: "start",
-      blockCount: config.blockCount,
-      length: children.length,
-    };
-    setSliderPosition((prev) => positionMovement({ prev, ...movemnetArgs }));
+    setSliderPosition((prev) =>
+      positionMovement({
+        prev,
+        ...new createMovementArgs(
+          config.position,
+          sliderInnerRef.current.offsetWidth,
+          "start",
+          config.blockCount,
+          children.length,
+          config.direction
+        ),
+      })
+    );
   }, [config]);
 
   useEffect(() => {
     if (config.autoplay) {
-      let id = setInterval(goRight, config.loopTimer);
+      const autoplayDiraction = {
+        right: goRight,
+        left: goLeft,
+      };
+      const id = setInterval(
+        autoplayDiraction[config.direction],
+        config.loopTimer
+      );
       setIntervalId(id);
     }
 
@@ -130,11 +149,7 @@ export default function Slider({ config, children }) {
 
   return (
     <div className={cn.slider}>
-      <div
-        style={navLeftStyles}
-        className={cn.navigation}
-        onClick={goLeft}
-      >
+      <div style={navLeftStyles} className={cn.navigation} onClick={goLeft}>
         <FaChevronLeft />
       </div>
       <div className={cn.window}>
@@ -148,11 +163,7 @@ export default function Slider({ config, children }) {
           {block}
         </div>
       </div>
-      <div
-        style={navRightStyles}
-        className={cn.navigation}
-        onClick={goRight}
-      >
+      <div style={navRightStyles} className={cn.navigation} onClick={goRight}>
         <FaChevronRight />
       </div>
     </div>

@@ -1,4 +1,4 @@
-export default function createMovementType(
+export default function createRightMovementType(
   width,
   blockCount,
   length,
