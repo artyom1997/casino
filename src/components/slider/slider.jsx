@@ -111,7 +111,7 @@ export default function Slider({ config, children }) {
         });
       })
     );
-  }, [config]);
+  }, [config,children]);
 
   useEffect(() => {
     setSliderPosition((prev) =>
@@ -127,7 +127,7 @@ export default function Slider({ config, children }) {
         ),
       })
     );
-  }, [config]);
+  }, [config,children]);
 
   useEffect(() => {
     if (config.autoplay) {
@@ -145,7 +145,7 @@ export default function Slider({ config, children }) {
     return () => {
       clearInterval(intervalId);
     };
-  }, []);
+  }, [config]);
 
   return (
     <div className={cn.slider}>

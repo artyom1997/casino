@@ -5,13 +5,13 @@ import Slide from "../slide/slide"
 export default function Banner() {
   const config = {
     autoplay: true,
-    blockCount: 3,
+    blockCount: 2,
     navigation: true,
     navigationPosition: "space-between",
     pagination: true,
     loopTimer: 2000,
     position: "start",
-    direction: "left",
+    direction: "right",
     paginationClickable: true,
   };
 

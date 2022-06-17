@@ -19,7 +19,7 @@ export default function createLeftMovementType(
     } else if (prev + width >= 0) {
       type = "end";
     } else {
-        type = "move"
+      type = "move";
     }
   }
   return type;
