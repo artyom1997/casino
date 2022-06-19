@@ -1,6 +1,6 @@
 const functionPack = {
   right: {
-    center(prev, width, type, length, blockCount) {
+    center({ prev, width, type, blockCount }) {
       switch (type) {
         case "start":
           return (prev = (width / blockCount) * ((blockCount - 1) / 2));
@@ -12,7 +12,7 @@ const functionPack = {
           return 0;
       }
     },
-    start(prev, width, type, length, blockCount) {
+    start({ prev, width, type, length, blockCount }) {
       switch (type) {
         case "start":
           return (prev = 0);
@@ -28,7 +28,7 @@ const functionPack = {
     },
   },
   left: {
-    center(prev, width, type, length, blockCount) {
+    center({ prev, width, type, length, blockCount }) {
       switch (type) {
         case "start":
           return (prev =
@@ -44,7 +44,7 @@ const functionPack = {
           return 0;
       }
     },
-    start(prev, width, type, length, blockCount) {
+    start({ prev, width, type, length, blockCount }) {
       switch (type) {
         case "start":
           return (prev = -(width / blockCount) * (length - blockCount));
@@ -63,11 +63,11 @@ const functionPack = {
 
 export default function positionMovement(args) {
   let { position, prev, width, type, length, blockCount, direction } = args;
-  return functionPack[direction][position](
+  return functionPack[direction][position]({
     prev,
     width,
     type,
     length,
-    blockCount
-  );
+    blockCount,
+  });
 }

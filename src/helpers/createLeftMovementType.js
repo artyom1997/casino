@@ -1,10 +1,9 @@
-export default function createLeftMovementType(
+export default function createLeftMovementType({
   width,
   blockCount,
-  length,
   prev,
-  position
-) {
+  position,
+}) {
   let type = "";
   if (position === "center") {
     if (prev >= (width / blockCount) * ((blockCount - 1) / 2)) {

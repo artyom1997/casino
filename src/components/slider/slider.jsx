@@ -22,13 +22,13 @@ export default function Slider({ config, children }) {
 
   const goRight = () => {
     setSliderPosition((prev) => {
-      const type = createRightMovementType(
-        sliderInnerRef.current.offsetWidth,
-        config.blockCount,
-        children.length,
+      const type = createRightMovementType({
+        width: sliderInnerRef.current.offsetWidth,
+        blockCount: config.blockCount,
+        length: children.length,
         prev,
-        config.position
-      );
+        position: config.position,
+      });
       return positionMovement({
         prev,
         ...new createMovementArgs(
@@ -46,13 +46,12 @@ export default function Slider({ config, children }) {
 
   const goLeft = () => {
     setSliderPosition((prev) => {
-      const type = createLeftMovementType(
-        sliderInnerRef.current.offsetWidth,
-        config.blockCount,
-        children.length,
+      const type = createLeftMovementType({
+        width: sliderInnerRef.current.offsetWidth,
+        blockCount: config.blockCount,
         prev,
-        config.position
-      );
+        position: config.position,
+      });
       return positionMovement({
         prev,
         ...new createMovementArgs(
@@ -67,6 +66,14 @@ export default function Slider({ config, children }) {
     });
     clearInterval(intervalId);
   };
+
+  const sliderStyles = useMemo(() => {
+    if (config.navigationPosition === "space-between") {
+      return {
+        padding: "0 40px",
+      };
+    }
+  }, [config]);
 
   const navLeftStyles = useMemo(() => {
     if (sliderInnerRef?.current?.offsetWidth) {
@@ -111,7 +118,7 @@ export default function Slider({ config, children }) {
         });
       })
     );
-  }, [config,children]);
+  }, [config, children]);
 
   useEffect(() => {
     setSliderPosition((prev) =>
@@ -127,7 +134,7 @@ export default function Slider({ config, children }) {
         ),
       })
     );
-  }, [config,children]);
+  }, [config, children]);
 
   useEffect(() => {
     if (config.autoplay) {
@@ -148,7 +155,7 @@ export default function Slider({ config, children }) {
   }, [config]);
 
   return (
-    <div className={cn.slider}>
+    <div style={sliderStyles} className={cn.slider}>
       <div style={navLeftStyles} className={cn.navigation} onClick={goLeft}>
         <FaChevronLeft />
       </div>

@@ -1,13 +1,13 @@
-export default function createRightMovementType(
+export default function createRightMovementType({
   width,
   blockCount,
   length,
   prev,
-  position
-) {
+  position,
+}) {
   let type = "";
   if (position === "center") {
-    if ((width / blockCount) * (length - 2) <= -prev) {
+    if ((width / blockCount) * (length - 2) < -prev) {
       type = "end";
     } else {
       type = "move";
@@ -20,7 +20,7 @@ export default function createRightMovementType(
     ) {
       type = "end";
     } else if (
-      prev - width <=
+      prev - width <
       -((Math.ceil(length / blockCount) - 1) * width)
     ) {
       type = "goStart";
