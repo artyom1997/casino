@@ -1,0 +1,29 @@
+.jackpot_block {
+    min-width: 23%;
+    height: 90px;
+    border-radius: 5px;
+    margin: 0 5px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+.block_info {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 15%;
+}
+
+.title {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.subtitle {
+    color: #85bb65;
+    font-size: 20px;
+    font-weight: bold;
+}

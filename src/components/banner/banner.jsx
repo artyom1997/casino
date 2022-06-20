@@ -1,6 +1,6 @@
-import "./banner.css";
-import Slider from "../slider/slider";
-import Slide from "../slide/slide";
+import "./Banner.css";
+import Slider from "../../utils/slider/Slider";
+import Slide from "../../utils/slide/Slide";
 import banner from "../../files/casino-banners/banner.jpg";
 
 export default function Banner() {

@@ -1,4 +1,4 @@
-import cn from "./slider.module.scss";
+import cn from "./Slider.module.scss";
 import PropTypes from "prop-types";
 import createRightMovementType from "../../helpers/createRightMovementType";
 import createLeftMovementType from "../../helpers/createLeftMovementType";
@@ -107,6 +107,7 @@ export default function Slider({ config, children }) {
         };
       }
     }
+    return {}
   }, [sliderInnerRef.current, config]);
 
   useEffect(() => {

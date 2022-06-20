@@ -1,10 +1,12 @@
-import './App.css';
-import Banner from './components/banner/banner';
+import "./App.css";
+import Banner from "./components/banner/Banner";
+import JackpotRow from "./components/jackpot-row/JackpotRow";
 
 function App() {
   return (
     <div className="App">
-           <Banner/>
+      <Banner />
+      <JackpotRow />
     </div>
   );
 }

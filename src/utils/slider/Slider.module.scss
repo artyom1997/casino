@@ -9,7 +9,7 @@
 
 .window {
     width: 100%;
-    overflow-y: hidden;
+    overflow: hidden;
 
     &::-webkit-scrollbar {
         display: none

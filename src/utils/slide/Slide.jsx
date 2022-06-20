@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import cn from "./slide.module.scss";
+import cn from "./Slide.module.scss";
 
 export default function Slide({ children, config, sliderInnerRef }) {
   const [slideBlockStyle, setSlideBlockStyle] = useState({});

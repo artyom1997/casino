@@ -1,0 +1,12 @@
+.jackpot_row {
+    margin: 10px 0;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+}
+
+.jackpot_row::-webkit-scrollbar {
+    display: none;
+}
