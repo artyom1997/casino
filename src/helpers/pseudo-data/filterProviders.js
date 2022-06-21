@@ -1,0 +1,52 @@
+export const FilterProviders = [
+    {
+        title:'Amatic',
+        aggregator:'amatic',
+        id:1
+    },
+    {
+        title:'EGT',
+        aggregator:'egt',
+        id:2
+    },
+    {
+        title:'Betsoft',
+        aggregator:'betsoft',
+        id:3
+    },
+    {
+        title:'Blueprint',
+        aggregator:'blueprint',
+        id:4
+    },
+    {
+        title:'Blueprint Premium',
+        aggregator:'blueprintPremium',
+        id:5
+    },
+    {
+        title:'Booongo',
+        aggregator:'booongo',
+        id:6
+    },
+    {
+        title:'Calamba',
+        aggregator:'calamba',
+        id:7
+    },
+    {
+        title:'Platipus',
+        aggregator:'platipus',
+        id:8
+    },
+    {
+        title:'Playson',
+        aggregator:'playson',
+        id:9
+    },
+    {
+        title:'Pragmatic Play',
+        aggregator:'pragmaticPlay',
+        id:10
+    },
+]

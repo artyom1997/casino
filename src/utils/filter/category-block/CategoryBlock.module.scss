@@ -1,0 +1,14 @@
+.category_block {
+    background-color: white;
+    color: #90a3b9;
+    min-width: max-content;
+    min-height: 25px;
+    border: none;
+    margin: 5px 8px;
+    border-radius: 3px;
+    padding: 5px 15px;
+    font-weight: bold;
+    &:hover {
+        cursor: pointer;
+    }
+}

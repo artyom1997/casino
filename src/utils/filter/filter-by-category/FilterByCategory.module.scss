@@ -1,0 +1,8 @@
+.filter_category_block {
+    max-width: 80%;
+    overflow-x: auto;
+    display: flex;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}

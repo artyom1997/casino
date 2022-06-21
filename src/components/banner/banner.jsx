@@ -1,7 +1,7 @@
 import "./Banner.css";
 import Slider from "../../utils/slider/Slider";
 import Slide from "../../utils/slide/Slide";
-import banner from "../../files/casino-banners/banner.jpg";
+import { Banners } from "../../helpers/pseudo-data/banners";
 
 export default function Banner() {
   const config = {
@@ -16,43 +16,10 @@ export default function Banner() {
     paginationClickable: true, // true || false
   };
 
-  const banners = [
-    {
-      url: banner,
-      id: 1,
-      src: "",
-    },
-    {
-      url: banner,
-      id: 2,
-      src: "",
-    },
-    {
-      url: banner,
-      id: 3,
-      src: "",
-    },
-    {
-      url: banner,
-      id: 4,
-      src: "",
-    },
-    {
-      url: banner,
-      id: 5,
-      src: "",
-    },
-    {
-      url: banner,
-      id: 6,
-      src: "",
-    },
-  ];
-
   return (
     <div className="banner-main">
       <Slider config={config}>
-        {banners.map((el) => {
+        {Banners.map((el) => {
           return (
             <Slide key={el.id}>
               <img className="banner_img" src={el.url} alt="" />
