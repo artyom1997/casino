@@ -1,0 +1,32 @@
+.game {
+    width: calc((100% - 60px) / 5);
+    height: 225px;
+    background-color: red;
+    margin: 0 15px 15px 0;
+    border-radius: 3px;
+    background-color: white;
+    position:relative;
+} 
+
+.game:nth-child(5n){
+    margin-right: 0;
+}
+
+.game_info {
+    width: 100%;
+    height: 85%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.game_title {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: #64717d;
+    display: flex;
+    height: 15%;
+    justify-content: center;
+    align-items: center;
+}

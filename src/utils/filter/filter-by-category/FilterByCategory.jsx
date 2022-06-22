@@ -5,6 +5,6 @@ import { FilterCategories } from "../../../helpers/pseudo-data/filterCategories"
 
 export default function FilterByCategory() {
   return <div className={cn.filter_category_block}>
-    {FilterCategories.map(el => <CategoryBlock title={el.title} key={el.id} />)}
+    {FilterCategories.map(el => <CategoryBlock title={el.title} key={el.id} aggregator={el.aggregator} />)}
   </div>;
 }
